@@ -7,4 +7,9 @@ script:
   - npm test
 
 notifications:
-  email: sophienanterre@gmail.com
+   email:
+    recipients:
+      - sophienanterre@gmail.com
+      
+    on_success: always # default: change
+    on_failure: always # default: always
