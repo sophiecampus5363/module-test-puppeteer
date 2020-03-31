@@ -17,6 +17,20 @@ describe("Tests basiques", () => {
         expect(html).toContain("Polr - Campus Annecy")
     }, timeout);
 
+     // vérification du chargement de la page d'accueil
+     test('home', async () => {
+        // charger la page d'accueil
+        await page.goto('http://polr.web-74.com/signup');
+        // attendre que l'élément <body> soit chargé
+        await page.waitForSelector('body');
+        // récupérer le contenu de l'élément <body>
+        const html = await page.$eval('body', e => e.innerHTML);
+        // vérifier que dans cet élément Body on trouve "Polr du campus"
+        await page.screenshot({path: './tests/img/signup.png'});
+        expect(html).toContain("Polr - Campus Annecy")
+    }, timeout);
+   
+
     // parcours client avec about
     test('home and about', async () => {
         await page.goto('http://polr.web-74.com');
